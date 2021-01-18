@@ -8,12 +8,12 @@
         "start": "webpack-dev-server --config webpack.dev.js --mode development",
         "build": "webpack --config webpack.prod.js --mode production",
         "preview": "yarn run build && http-server dist",
-        "deploy": "gh-pages-deploy -- 'A custom commit message'",
+        "deploy": "gh-pages-deploy -- ",
         "clean-source": "rimraf README.md src webroot package.json"
     },
     "gh-pages-deploy": {
         "staticpath": "dist",
-        "cname": "nope.org",
+        "cname": "decks.yurialvarez.com",
         "prep": [
             "build"
         ],
