@@ -1,16 +1,18 @@
 const path = require("path");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     devtool: "eval-cheap-module-source-map",
     entry: {
-        index: "./src/index.js",
-        patchwork: "./src/patchwork.js",
+        index: "./src/index/main.js",
+        patchwork: "./src/patchwork/main.js",
     },
     devServer: {
         port: 8080,
         contentBase: path.join(__dirname, "dist"),
+        writeToDisk: false,
     },
     node: {
         fs: "empty",
@@ -70,7 +72,7 @@ module.exports = {
             },
             {
                 // Load all icons
-                test: /\.(eot|woff|woff2|svg|ttf|ico)([\?]?.*)$/,
+                test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
                 use: [
                     {
                         loader: "file-loader",
@@ -81,10 +83,20 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: "./index.html",
+            template: "./src/index/template.html",
             inject: true,
             chunks: ["index"],
             filename: "index.html",
+        }),
+        new HtmlWebpackPlugin({
+            template: "./src/patchwork/template.html",
+            inject: true,
+            chunks: ["patchwork"],
+            filename: "patchwork.html",
+            title: "Patchwork Automa",
+        }),
+        new CopyPlugin({
+            patterns: [{ from: "src/patchwork/decks", to: "patchwork/decks" }],
         }),
     ],
 };

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+
+  <body>
+    <div class="grid">
+        <header>
+            <h1>Patchwork Automa</h1>
+        </header>
+        <article>
+            <div id="currentCard">
+                <img id="selectedCard" src="" alt="" />
+                <img id="deck" src="<%= require('./decks/1/back.png') %>"  alt="" />
+            </div>
+            <button id="normal-deck">
+                Normal Deck
+            </button>
+            <button id="tactical-deck">
+                Tactical Deck
+            </button>
+            <button id="next-card" style="display: none;">
+                Start
+            </button>
+        </article>
+
+   </div>
+
+  </body>
+</html>

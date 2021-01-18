@@ -19,13 +19,13 @@ button {
     background-color: #1dce94;
     border: none;
     border-radius: 500px;
-    color: white;
+    color: #333;
     padding: 0.5rem 1rem;
     transition: all 0.3s;
 
     &:hover {
-        color: #1dce94;
-        background-color: white;
+        color: white;
+        background-color: rgb(7, 79, 97);
     }
 
     &:active {

@@ -1,5 +1,5 @@
 require("normalize.css/normalize.css");
-require("./styles/index.scss");
+require("./../styles/index.scss");
 
 /*document.addEventListener("DOMContentLoaded", () => {
     const pluginsTriggerElement = document.getElementById("plugins-trigger");
@@ -12,7 +12,7 @@ require("./styles/index.scss");
     };
 });*/
 
-class Foo {
+/*class Foo {
     constructor() {
         this.value = "foobar";
     }
@@ -22,6 +22,6 @@ class Foo {
     getValue() {
         return this.value;
     }
-}
+}*/
 
-console.log(Foo.instance().getValue());
+console.log("index");
