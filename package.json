@@ -9,7 +9,7 @@
         "build": "webpack --config webpack.prod.js --mode production",
         "preview": "yarn run build && http-server dist",
         "deploy": "gh-pages-deploy -- ",
-        "clean-source": "rimraf README.md src webroot package.json"
+        "clean-source": "rimraf README.md src webroot package.json webpack.prod.js webpack.dev.js yarn.lock LICENSE .editorconfig"
     },
     "gh-pages-deploy": {
         "staticpath": "dist",

@@ -157,13 +157,6 @@ module.exports = {
     // https://webpack.js.org/configuration/optimization/
     optimization: {
         minimize: true,
-        minimizer: [
-            new TerserPlugin({
-                cache: true,
-                parallel: true,
-                sourceMap: true,
-            }),
-            new OptimizeCssAssetsPlugin({}),
-        ],
+        minimizer: [new OptimizeCssAssetsPlugin({})],
     },
 };
