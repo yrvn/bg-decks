@@ -5,6 +5,7 @@ const CleanWebpackPlugin = require("clean-webpack-plugin"); //installed via npm
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 
 const buildPath = path.resolve(__dirname, "dist");
@@ -89,6 +90,7 @@ module.exports = {
         ],
     },
     plugins: [
+        new CleanWebpackPlugin(buildPath),
         new HtmlWebpackPlugin({
             template: "./src/index/template.html",
             inject: true,
@@ -105,7 +107,7 @@ module.exports = {
         new CopyPlugin({
             patterns: [{ from: "src/patchwork/decks", to: "patchwork/decks" }],
         }),
-        new CleanWebpackPlugin(buildPath),
+
         new FaviconsWebpackPlugin({
             // Your source logo
             logo: "./src/assets/logo.png",
@@ -152,4 +154,16 @@ module.exports = {
             canPrint: true,
         }),
     ],
+    // https://webpack.js.org/configuration/optimization/
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new TerserPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap: true,
+            }),
+            new OptimizeCssAssetsPlugin({}),
+        ],
+    },
 };
