@@ -5,14 +5,15 @@ const CleanWebpackPlugin = require("clean-webpack-plugin"); //installed via npm
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 const buildPath = path.resolve(__dirname, "dist");
 
 module.exports = {
     devtool: "source-map",
     entry: {
-        index: "./src/index.js",
-        patchwork: "./src/patchwork/patchwork.js",
+        index: "./src/index/main.js",
+        patchwork: "./src/patchwork/main.js",
     },
     output: {
         filename: "[name].[hash:20].js",
@@ -89,14 +90,20 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: "./index.html",
-            // Inject the js bundle at the end of the body of the given template
-            inject: "body",
+            template: "./src/index/template.html",
+            inject: true,
+            chunks: ["index"],
+            filename: "index.html",
         }),
         new HtmlWebpackPlugin({
-            template: "./src/patchwork/patchwork.html",
-            // Inject the js bundle at the end of the body of the given template
-            inject: "body",
+            template: "./src/patchwork/template.html",
+            inject: true,
+            chunks: ["patchwork"],
+            filename: "patchwork.html",
+            title: "Patchwork Automa",
+        }),
+        new CopyPlugin({
+            patterns: [{ from: "src/patchwork/decks", to: "patchwork/decks" }],
         }),
         new CleanWebpackPlugin(buildPath),
         new FaviconsWebpackPlugin({
