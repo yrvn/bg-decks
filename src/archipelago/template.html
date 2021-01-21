@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head    head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title><%= htmlWebpackPlugin.options.title %></title>
+        <link rel="stylesheet" href="src/css/styles.css">
+    </head>
+    <body>
+        <div class="grid">
+            <header>
+
+            </header>
+            <article>
+                <h1>Archipelago</h1>
+
+                <div id="character">
+                    <h2></h2>
+                    <img id="character-front" src="" alt="" />
+                    <img id="character-back" src="" alt="" />
+                </div>
+                <div id="new-game">
+                    <button id="game-short">
+                        Short Game
+                    </button>
+                    <button id="game-medium">
+                        Medium Game
+                    </button>
+                    <button id="game-long">
+                        Long Game
+                    </button>
+                </div>
+                <button id="new-game" style="display: none;">
+                    Reset
+                </button>
+            </article>
+        </div>
+        <script src="src/js/app.js"></script>
+    </body>
+</html>
