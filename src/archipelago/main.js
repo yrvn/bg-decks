@@ -14,3 +14,5 @@ newButton.onclick = () => startGame(0);
 const startGame = (duration) => {
     console.log(duration);
 }
+
+console.log("Archi")
