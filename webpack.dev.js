@@ -48,7 +48,7 @@ module.exports = {
                         // compiles Sass to CSS
                         loader: "sass-loader",
                         options: {
-                            outputStyle: "expanded",
+                            implementation: require("sass"),
                             sourceMap: true,
                             sourceMapContents: true,
                         },

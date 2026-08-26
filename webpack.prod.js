@@ -23,6 +23,11 @@ module.exports = {
     node: {
         fs: "empty",
     },
+    resolve: {
+        alias: {
+            "node-sass": "sass",
+        },
+    },
     module: {
         rules: [
             {
@@ -58,7 +63,7 @@ module.exports = {
                         // compiles Sass to CSS
                         loader: "sass-loader",
                         options: {
-                            outputStyle: "expanded",
+                            implementation: require("sass"),
                             sourceMap: true,
                             sourceMapContents: true,
                         },

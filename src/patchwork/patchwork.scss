@@ -17,18 +17,24 @@
     background-color: var(--mat);
     background-image: repeating-linear-gradient(
             0deg,
-            var(--grid-line) 0 1px,
-            transparent 1px 40px
+            var(--grid-line) 0,
+            var(--grid-line) 1px,
+            transparent 1px,
+            transparent 40px
         ),
         repeating-linear-gradient(
             90deg,
-            var(--grid-line) 0 1px,
-            transparent 1px 40px
+            var(--grid-line) 0,
+            var(--grid-line) 1px,
+            transparent 1px,
+            transparent 40px
         ),
         repeating-linear-gradient(
             45deg,
-            var(--diagonal-line) 0 1px,
-            transparent 1px 80px
+            var(--diagonal-line) 0,
+            var(--diagonal-line) 1px,
+            transparent 1px,
+            transparent 80px
         );
     display: flex;
     flex-direction: column;
