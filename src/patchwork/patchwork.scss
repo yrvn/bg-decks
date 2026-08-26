@@ -1,0 +1,189 @@
+:root {
+    --mat: #3e5c54;
+    --mat-deep: #2c433d;
+    --grid-line: rgba(232, 197, 92, 0.28);
+    --diagonal-line: rgba(226, 105, 75, 0.16);
+    --card: #f5efe3;
+    --ink: #1f2b26;
+    --coral: #e2694b;
+    --mustard: #e8b54a;
+    --shadow: rgba(15, 25, 22, 0.4);
+}
+
+.patchwork-page {
+    box-sizing: border-box;
+    min-height: 100vh;
+    width: 100%;
+    background-color: var(--mat);
+    background-image: repeating-linear-gradient(
+            0deg,
+            var(--grid-line) 0 1px,
+            transparent 1px 40px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            var(--grid-line) 0 1px,
+            transparent 1px 40px
+        ),
+        repeating-linear-gradient(
+            45deg,
+            var(--diagonal-line) 0 1px,
+            transparent 1px 80px
+        );
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 1.25rem 4rem;
+    font-family: "Manrope", sans-serif;
+    color: var(--ink);
+
+    * {
+        box-sizing: border-box;
+    }
+
+    header {
+        margin-bottom: 2.5rem;
+        text-align: center;
+
+        h1 {
+            font-family: "Space Mono", monospace;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-size: clamp(1.3rem, 4vw, 2rem);
+            margin: 0;
+            color: var(--card);
+            text-shadow: 0 2px 0 var(--mat-deep);
+        }
+
+        span {
+            display: block;
+            margin-top: 0.5rem;
+            font-weight: 500;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(245, 239, 227, 0.6);
+        }
+    }
+
+    article {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.75rem;
+    }
+}
+
+.card-stage {
+    position: relative;
+    width: 220px;
+    height: 337px;
+    max-width: 60vw;
+}
+
+.card {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 16px 30px var(--shadow);
+    background: var(--card);
+    object-fit: cover;
+}
+
+#deck {
+    z-index: 1;
+    transform: translate(10px, 8px) rotate(-4deg);
+
+    &.is-shuffling {
+        animation: shuffle 0.5s ease-in-out;
+    }
+}
+
+#selectedCard {
+    z-index: 2;
+    display: none;
+    transform-origin: 30% 100%;
+
+    &.is-dealing {
+        animation: deal 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+}
+
+@keyframes deal {
+    0% {
+        opacity: 0;
+        transform: translate(-90px, 70px) rotate(-22deg) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0, 0) rotate(2deg) scale(1);
+    }
+}
+
+@keyframes shuffle {
+    0%,
+    100% {
+        transform: rotate(-4deg) translateX(0);
+    }
+    20% {
+        transform: rotate(7deg) translateX(6px);
+    }
+    40% {
+        transform: rotate(-9deg) translateX(-6px);
+    }
+    60% {
+        transform: rotate(6deg) translateX(4px);
+    }
+    80% {
+        transform: rotate(-3deg) translateX(-3px);
+    }
+}
+
+.choices,
+.actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.patchwork-page button {
+    font-family: "Manrope", sans-serif;
+    font-weight: 800;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border: none;
+    border-radius: 999px;
+    padding: 0.8rem 1.6rem;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 5px 0 rgba(0, 0, 0, 0.18), 0 10px 18px var(--shadow);
+
+    &:hover {
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        transform: translateY(2px);
+        box-shadow: 0 3px 0 rgba(0, 0, 0, 0.18);
+    }
+}
+
+#normal-deck {
+    background: var(--mustard);
+    color: var(--ink);
+}
+
+#tactical-deck {
+    background: var(--coral);
+    color: var(--card);
+}
+
+#next-card {
+    background: var(--card);
+    color: var(--mat-deep);
+}

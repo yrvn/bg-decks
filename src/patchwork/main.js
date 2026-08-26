@@ -1,5 +1,6 @@
 require("normalize.css/normalize.css");
 require("./../styles/index.scss");
+require("./patchwork.scss");
 
 const normalDeckButton = document.getElementById("normal-deck");
 const tacticalDeckButton = document.getElementById("tactical-deck");
@@ -71,6 +72,9 @@ function showCard() {
                 console.log(currentItem.front);
                 currentDeck.splice(currentCard, 1);
                 selectedCard.setAttribute("src", `${currentItem.front}`);
+                selectedCard.classList.remove("is-dealing");
+                void selectedCard.offsetWidth;
+                selectedCard.classList.add("is-dealing");
             }
 
             if (currentDeck.length == 0) {
@@ -94,7 +98,9 @@ function showCard() {
         let nextItem = getCard(currentDeck[currentCard].id);
         deck.setAttribute("src", `${nextItem.back}`);
         deck.style.display = "initial";
-        deck.style.display = "initial";
+        deck.classList.remove("is-shuffling");
+        void deck.offsetWidth;
+        deck.classList.add("is-shuffling");
         showNextButton();
     }
 }

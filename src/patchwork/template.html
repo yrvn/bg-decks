@@ -3,27 +3,35 @@
   <head>
     <meta charset="UTF-8">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&family=Manrope:wght@500;800&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <div class="grid">
+    <div class="patchwork-page">
         <header>
             <h1>Patchwork Automa</h1>
+            <span>Solo mode deck assistant</span>
         </header>
         <article>
-            <div id="currentCard">
-                <img id="selectedCard" src="" alt="" />
-                <img id="deck" src="<%= require('./decks/1/back.png') %>"  alt="" />
+            <div id="currentCard" class="card-stage">
+                <img id="selectedCard" class="card" src="" alt="" />
+                <img id="deck" class="card" src="<%= require('./decks/1/back.png') %>"  alt="" />
             </div>
-            <button id="normal-deck">
-                Normal Deck
-            </button>
-            <button id="tactical-deck">
-                Tactical Deck
-            </button>
-            <button id="next-card" style="display: none;">
-                Start
-            </button>
+            <div class="choices">
+                <button id="normal-deck">
+                    Normal Deck
+                </button>
+                <button id="tactical-deck">
+                    Tactical Deck
+                </button>
+            </div>
+            <div class="actions">
+                <button id="next-card" style="display: none;">
+                    Start
+                </button>
+            </div>
         </article>
 
    </div>
