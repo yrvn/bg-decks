@@ -108,6 +108,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 __webpack_require__(0);
 __webpack_require__(1);
+__webpack_require__(4);
 
 var normalDeckButton = document.getElementById("normal-deck");
 var tacticalDeckButton = document.getElementById("tactical-deck");
@@ -184,6 +185,9 @@ function showCard() {
                 console.log(currentItem.front);
                 currentDeck.splice(currentCard, 1);
                 selectedCard.setAttribute("src", "" + currentItem.front);
+                selectedCard.classList.remove("is-dealing");
+                void selectedCard.offsetWidth;
+                selectedCard.classList.add("is-dealing");
             }
 
             if (currentDeck.length == 0) {
@@ -207,7 +211,9 @@ function showCard() {
         var _nextItem = getCard(currentDeck[currentCard].id);
         deck.setAttribute("src", "" + _nextItem.back);
         deck.style.display = "initial";
-        deck.style.display = "initial";
+        deck.classList.remove("is-shuffling");
+        void deck.offsetWidth;
+        deck.classList.add("is-shuffling");
         showNextButton();
     }
 }
@@ -238,6 +244,12 @@ function shuffleDeck() {
     shuffle = true;
 }
 
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
 /***/ })
 /******/ ]);
-//# sourceMappingURL=patchwork.d86314856ee184184d25.js.map
+//# sourceMappingURL=patchwork.8445226993a345f99b39.js.map
