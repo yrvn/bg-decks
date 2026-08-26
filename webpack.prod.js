@@ -14,8 +14,7 @@ module.exports = {
     devtool: "source-map",
     entry: {
         index: "./src/index/main.js",
-        patchwork: "./src/patchwork/main.js",
-        archipelage: "./src/archipelago/main.js"
+        patchwork: "./src/patchwork/main.js"
     },
     output: {
         filename: "[name].[hash:20].js",
@@ -105,16 +104,8 @@ module.exports = {
             filename: "patchwork.html",
             title: "Patchwork Automa",
         }),
-        new HtmlWebpackPlugin({
-            template: "./src/archipelago/template.html",
-            inject: true,
-            chunks: ["archipelago"],
-            filename: "archipelago.html",
-            title: "Archipelago Solo",
-        }),
         new CopyPlugin({
-            patterns: [{ from: "src/patchwork/decks", to: "patchwork/decks" },
-            { from: "src/archipelago/decks", to: "archipelago/decks" }],
+            patterns: [{ from: "src/patchwork/decks", to: "patchwork/decks" }],
         }),
 
         new FaviconsWebpackPlugin({
